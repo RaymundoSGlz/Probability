@@ -5,13 +5,13 @@ data(heights)
 x <- heights %>% filter(sex == "Male") %>% pull(height)
 #estimamos la probabilidad
 1 - pnorm(70.5, mean(x), sd(x))
-#grafica de la distribucion de probabilidad
+#gráfica de la distribución de probabilidad
 plot(prop.table(table(x)), xlab = "a = Altura en pulgadas", ylab = "P(x = a)")
-# Probabilidades de los datos actuales donde las distancioas contienen un entero
+# Probabilidades de los datos actuales donde las distancias contienen un entero
 mean(x <= 68.5) - mean(x <= 67.5)
 mean(x <= 69.5) - mean(x <= 68.5)
 mean(x <= 70.5) - mean(x <= 69.5)
-# Probabilidades con la aproximacion normal
+# Probabilidades con la aproximación normal
 pnorm(68.5, mean(x), sd(x)) - pnorm(67.5, mean(x), sd(x))
 pnorm(69.5, mean(x), sd(x)) - pnorm(68.5, mean(x), sd(x))
 pnorm(70.5, mean(x), sd(x)) - pnorm(69.5, mean(x), sd(x))

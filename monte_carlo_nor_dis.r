@@ -15,13 +15,13 @@ simulated_heights <- rnorm(n, avg, s)
 data.frame(simulated_heights = simulated_heights) %>%
     ggplot(aes(simulated_heights)) +
     geom_histogram(color="black", binwidth = 2)
-#simulacion de monte carlo
+#simulación de monte Carlo
 B <- 10000
 tallest <- replicate(B, {
     simulated_data <- rnorm(800, avg, s)
     max(simulated_data)    # determina la altura maxima
 })
-mean(tallest >= 7*12) #proporcion de seven footer
+mean(tallest >= 7*12) #proporción de seven footer
 
 #otras distribuciones
 x <- seq(-4, 4, length.out = 100)

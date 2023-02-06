@@ -1,5 +1,5 @@
 n <- 1000 #numero de prestamos realizados
-per_hip <- -20000 # perdida por ejecucion hipotecaria
+per_hip <- -20000 # perdida por ejecución hipotecaria
 p <- 0.02 #porcentaje de deudores
 # Utilizamos las propiedades de la distribución normal
 # para calcular la tasa de interés necesaria 
@@ -8,7 +8,7 @@ p <- 0.02 #porcentaje de deudores
 incumplimiento <- sample(c(0,1), n, prob = c(1-p, p), replace = TRUE)
 sum(incumplimiento * per_hip)
 
-# Utilizando una simulacion de Monte Carlo
+# Utilizando una simulación de Monte Carlo
 B <- 10000
 perdidas <- replicate(B, {
     incumplimiento <- sample(c(0, 1), n, prob = c(1-p, p), replace = TRUE)
@@ -23,23 +23,23 @@ data.frame(perdidas_en_millones = perdidas/10^6) %>%
 
 # Utilizando CTL
 n*(p*per_hip + (1-p)*0)    # Valor esperado
-sqrt(n)*abs(per_hip)*sqrt(p*(1-p))    # error estandar
+sqrt(n)*abs(per_hip)*sqrt(p*(1-p))    # error estándar
 
-#para alcanzar el equilibrio x deberia ser
+#para alcanzar el equilibrio x debería ser
 x_e <- -per_hip * p / (1 - p)
-#interes de
+#interés de
 x_e/180000
 
-# Calculando mejor tasa de interes
+# Calculando mejor tasa de interés
 l <- per_hip
 z <- qnorm(0.01)
 x <- -l * (n * p - z * sqrt(n * p * (1 - p)))/ (n * (1 - p)
 + z * sqrt(n * p * (1 - p)))
-#interes
+#interés
 x / 180000
 
-#ganancia esperada por prestamo
-per_hip * p + x * (1 - p)    # Ganacia esperada por prestamo
+#ganancia esperada por préstamo
+per_hip * p + x * (1 - p)    # Ganancia esperada por préstamo
 n * (per_hip * p + x * (1 - p)) # ganancia esperada total
 
 # Utilizamos Monte Carlo para verificar

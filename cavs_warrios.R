@@ -1,34 +1,37 @@
-# Assign a variable 'n' as the number of remaining games.
+# Asignamos una variable 'n' como el número de juegos restantes.
 n <- 6
 
-# Assign a variable `outcomes` as a vector of possible game outcomes, where 0 indicates a loss and 1 indicates a win for the Cavs.
-outcomes <- c(0,1)
+# Asignamos una variable 'outcomes' como un vector de posibles resultados de juego,
+# donde 0 indica una pérdida y 1 indica una victoria para los Cavs.
+outcomes <- c(0, 1)
 
-# Assign a variable `l` to a list of all possible outcomes in all remaining games. Use the `rep` function on `list(outcomes)` to create list of length `n`. 
+# Asignamos una variable 'l' a una lista de todos los posibles resultados en todos los juegos restantes.
+# Use la función `rep` en `list(outcomes)` para crear una lista de longitud `n`.
 l <- rep(list(outcomes), n)
 
-# Create a data frame named 'possibilities' that contains all combinations of possible outcomes for the remaining games.
+# Creamos un data frame llamado 'posibilities' que contiene todas las combinaciones de resultados posibles para los juegos restantes.
 possibilities <- expand.grid(l)
 
-# Create a vector named 'results' that indicates whether each row in the data frame 'possibilities' contains enough wins for the Cavs to win the series.
-results <- rowSums(possibilities)>=4
+# Creamos un vector llamado 'results' que indica si cada fila en el data frame 'posibilities' contiene suficientes victorias para que los Cavs ganen la serie.
+results <- rowSums(possibilities) >= 4
 
-# Calculate the proportion of 'results' in which the Cavs win the series. Print the outcome to the console.
+# Calculamos la proporción de 'results' en los que los Cavs ganan la serie. Imprimimos el resultado en la consola.
 mean(results)
 
 
-# The variable `B` specifies the number of times we want the simulation to run. Let's run the Monte Carlo simulation 10,000 times.
+# La variable `B` especifica el número de veces que queremos que se ejecute la simulación de Monte Carlo.
+# Ejecutemos la simulación de Monte Carlo 10,000 veces.
 B <- 10000
 
-# Use the `set.seed` function to make sure your answer matches the expected result after random sampling.
+# Usamos la función `set.seed` para asegurarnos de que su respuesta coincida con el resultado esperado después de la muestreo aleatorio.
 set.seed(1)
 
-# Create an object called `results` that replicates for `B` iterations a simulated series and determines whether that series contains at least four wins for the Cavs.
+# Creamos un objeto llamado `results` que replica para `B` iteraciones una serie simulada y determina si esa serie contiene al menos cuatro victorias para los Cavs.
 results <- replicate(B, {
-  cavs_wins <- sample(c(0,1), 6, replace = TRUE)
-  sum(cavs_wins)>=4 
+  cavs_wins <- sample(c(0, 1), 6, replace = TRUE)
+  sum(cavs_wins) >= 4
 })
 
-# Calculate the frequency out of `B` iterations that the Cavs won at least four games in the remainder of the series. Print your answer to the console. 
+# Calculamos la frecuencia de `B` iteraciones en que los Cavs ganaron al menos cuatro juegos en el resto de la serie.
+# Imprimimos su respuesta en la consola.
 mean(results)
-

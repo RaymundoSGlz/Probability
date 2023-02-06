@@ -4,13 +4,13 @@ runners <- c("Jamaica", "Jamaica", "Jamaica",
 winners <- sample(runners, 3)
 #definimos el numero de repeticiones
 B <- 10000
-#replicamos 
+#replicamos
 set.seed(1)
 eventos <- replicate(B, {
     winners <- sample(runners, 3)
     jam <- all(winners == "Jamaica")
     })
-#mostramos la distribucion en una tabla
+#mostramos la distribución en una tabla
 tab <- table(eventos)
 
 prop.table(tab)
