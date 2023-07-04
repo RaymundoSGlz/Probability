@@ -20,6 +20,10 @@ Puede encontrar el repositorio de seguimiento en el siguiente enlace:
 El contenido de este curso se divide en notebooks los cuales se encuentran en la carpeta `notebooks` y contienen una sección, secciones que se enlistan a continuación:
 
 - Section 1: Discrete Probability
+    - 1.1 Introducción a la probabilidad discreta
+    - 1.2 Combinaciones y permutaciones
+    - 1.3 Regla de la suma y Monty Hall
+
 
 - Section 2: Continuos probability
 
